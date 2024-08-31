@@ -9,16 +9,16 @@
 DeviceWorker::DeviceWorker(int id, QObject *parent) :
     QObject(parent), workerId(id)
 {
-        qDebug()<<"线程id:"<<workerId;
-        int numDevices = USB_ScanDevice(DevHandle);  // 获取设备数量
+    qDebug()<<"线程id:"<<workerId;
+    int numDevices = USB_ScanDevice(DevHandle);  // 获取设备数量
 
-            if (numDevices > 0) {
-                for (int i = 0; i < numDevices; ++i) {
-                    qDebug() << "Device ID:" << DevHandle[i];  // 打印每个设备的设备号
-                }
-            } else {
-                qDebug() << "No devices found!";
-            }
+    if (numDevices > 0) {
+        for (int i = 0; i < numDevices; ++i) {
+            qDebug() << "Device ID:" << DevHandle[i];  // 打印每个设备的设备号
+        }
+    } else {
+        qDebug() << "No devices found!";
+    }
 
 }
 
@@ -94,6 +94,7 @@ void DeviceWorker::process()
     ret = CAN_Init(DevHandle[0], CANIndex, &CANConfig);
     if (ret != CAN_SUCCESS) {
         qDebug() << QString().sprintf("CAN 配置失败!");
+        qDebug() <<"DevHandle[0]"<<DevHandle[0]<<"CANIndex"<<CANIndex;
         emit finished();
         return;
     } else {

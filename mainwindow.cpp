@@ -77,6 +77,7 @@ void MainWindow::on_pushButton_clicked()
         qDebug()<<QString().sprintf("Firmware Version:v%d.%d.%d",(DevInfo.FirmwareVersion>>24)&0xFF,(DevInfo.FirmwareVersion>>16)&0xFF,DevInfo.FirmwareVersion&0xFFFF);
         qDebug()<<QString().sprintf("Hardware Version:v%d.%d.%d",(DevInfo.HardwareVersion>>24)&0xFF,(DevInfo.HardwareVersion>>16)&0xFF,DevInfo.HardwareVersion&0xFFFF);
         qDebug()<<QString().sprintf("Firmware Functions:%s",FunctionStr);
+        qDebug()<<QString().sprintf("Firmware SerialNumber:%s",DevInfo.SerialNumber);
     }
 #endif
 
